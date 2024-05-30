@@ -28,4 +28,8 @@ public class QuestionService {
         return "success";
     }
     
+    public String deleteQuestionById(Integer id) {
+        questionDao.deleteById(id);
+        return "success";
+    }
 }
