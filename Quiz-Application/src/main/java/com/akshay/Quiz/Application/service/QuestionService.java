@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.akshay.Quiz.Application.Question;
 import com.akshay.Quiz.Application.dao.QuestionDao;
+import com.akshay.Quiz.Application.model.Question;
 
 
 @Service
@@ -39,7 +39,7 @@ public class QuestionService {
     public ResponseEntity<String> addQuestion(Question question){
         try {
             questionDao.save(question);
-            return new ResponseEntity<>("success", HttpStatus.OK);
+            return new ResponseEntity<>("success", HttpStatus.CREATED);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class QuestionService {
     public ResponseEntity<String> deleteQuestionById(Integer id) {
         try {
             questionDao.deleteById(id);
-            return new ResponseEntity<>("success", HttpStatus.OK);
+            return new ResponseEntity<>("success", HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             e.printStackTrace();
         }
